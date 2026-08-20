@@ -1,0 +1,1 @@
+document.write("HEllo from js file");
