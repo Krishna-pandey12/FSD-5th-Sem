@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <main class="app-shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Academic records</p>
+        <h1>Student Management System</h1>
+        <p class="subtitle">Add, review, and manage student performance in one place.</p>
+      </div>
+      <div class="header-mark" aria-hidden="true">SMS</div>
+    </header>
+
+    <section class="dashboard-grid" aria-label="Student summary">
+      <article class="stat-card stat-card-blue"><span class="stat-label">Total students</span><strong id="totalStudents">0</strong><span class="stat-note">Currently enrolled</span></article>
+      <article class="stat-card stat-card-yellow"><span class="stat-label">Average marks</span><strong id="averageMarks">0.00</strong><span class="stat-note">Across all students</span></article>
+      <article class="stat-card stat-card-green"><span class="stat-label">Highest marks</span><strong id="highestMarks">0</strong><span class="stat-note">Top performance</span></article>
+    </section>
+
+    <section class="workspace-grid">
+      <section class="panel form-panel">
+        <div class="section-heading"><div><p class="eyebrow">New record</p><h2 id="formTitle">Add a student</h2></div><span class="form-badge">Required</span></div>
+        <form id="studentForm" novalidate>
+          <div class="form-row"><label for="rollNo">Roll number</label><input id="rollNo" name="rollNo" type="text" inputmode="numeric" pattern="[0-9]+" placeholder="e.g. 1024" required><small class="error-message" id="rollNoError"></small></div>
+          <div class="form-row"><label for="studentName">Student name</label><input id="studentName" name="studentName" type="text" pattern="[A-Za-z ]+" placeholder="e.g. Aanya Sharma" required><small class="error-message" id="studentNameError"></small></div>
+          <div class="form-row"><label for="course">Course</label><input id="course" name="course" type="text" placeholder="e.g. Computer Science" required><small class="error-message" id="courseError"></small></div>
+          <div class="form-row"><label for="marks">Marks <span>(0-100)</span></label><input id="marks" name="marks" type="number" min="0" max="100" step="0.01" placeholder="e.g. 87.5" required><small class="error-message" id="marksError"></small></div>
+          <div class="form-actions"><button class="button button-primary" id="submitButton" type="submit">Add student</button><button class="button button-secondary hidden" id="cancelButton" type="button">Cancel</button></div>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+      </section>
+
+      <section class="panel records-panel">
+        <div class="records-toolbar"><div><p class="eyebrow">Directory</p><h2>Student records</h2></div><label class="search-box" for="searchInput"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search students..." autocomplete="off"></label></div>
+        <div class="table-wrap">
+          <table><caption class="sr-only">Student records with grades and actions</caption><thead><tr><th>Roll no.</th><th>Name</th><th>Course</th><th>Marks</th><th>Grade</th><th>Actions</th></tr></thead><tbody id="studentTableBody"></tbody></table>
+          <div class="empty-state" id="emptyState"><span class="empty-icon" aria-hidden="true">＋</span><strong id="emptyTitle">No students added yet</strong><p id="emptyMessage">Add your first student using the form to see them here.</p></div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="index.js"></script>
+</body>
+</html>
